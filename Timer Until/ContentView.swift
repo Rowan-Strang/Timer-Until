@@ -7,16 +7,33 @@
 
 import SwiftUI
 
-struct CountdownEvent: Identifiable {
+struct CountdownEvent: Identifiable, Codable {
     let title: String
     let dateTime: Date
-    let id : UUID
+    var id : UUID
     let emoji: String
 }
 
 @Observable
 class Events {
-    var items = [CountdownEvent]()
+    var items = [CountdownEvent](){
+        didSet {
+            if let encoded = try? JSONEncoder().encode(items) {
+                UserDefaults.standard.set(encoded, forKey: "Events")
+            }
+        }
+    }
+    
+    init() {
+        if let savedItems = UserDefaults.standard.data(forKey: "Events") {
+            if let decodedItems = try? JSONDecoder().decode([CountdownEvent].self, from: savedItems){
+                items = decodedItems
+                return
+            }
+        }
+        
+        items = []
+    }
 }
 
 struct ContentView: View {
