@@ -42,6 +42,10 @@ struct ContentView: View {
     @State private var now = Date()
     @State private var showingAddNewEvent = false
     
+    var eventsSorted: [CountdownEvent] {
+        events.items.sorted { $0.dateTime < $1.dateTime}
+    }
+    
     var body: some View {
         NavigationStack {
             Group {
@@ -54,8 +58,8 @@ struct ContentView: View {
                     }
                 } else {
                     List{
-                        ForEach(events.items){
-                            item in NavigationLink(value: "nothing"){
+                        ForEach(eventsSorted){
+                            item in NavigationLink(value: "add later"){
                                 HStack{
                                     Text(item.emoji)
                                         .font(.largeTitle)
@@ -92,8 +96,13 @@ struct ContentView: View {
         
     }
     
+//    func removeEvent(at offsets: IndexSet){
+//        events.items.remove(atOffsets: offsets)
+//    }
     func removeEvent(at offsets: IndexSet){
-        events.items.remove(atOffsets: offsets)
+//        eventsSorted.remove(atOffsets: offsets)
+        let idsToDelete = offsets.map {eventsSorted[$0].id }
+        events.items.removeAll {idsToDelete.contains($0.id) }
     }
 }
 
