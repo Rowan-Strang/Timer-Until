@@ -10,9 +10,17 @@ import SwiftUI
 struct AddNewEvent: View {
     @Environment(\.dismiss) var dismiss
     
+    enum Field: Hashable {
+        case title
+        case dateTime
+        case emoji
+    }
+    
     @State private var title = ""
     @State private var dateTime = Date()
     @State private var emoji = "🚍"
+    
+    @FocusState private var focusedField: Field?
     
 //    init(events: Events) {
 //        self.events = events
@@ -24,8 +32,19 @@ struct AddNewEvent: View {
     var body: some View {
         NavigationStack{
             Form {
-                TextField("title", text: $title)
-                DatePicker("When", selection: $dateTime, displayedComponents: .hourAndMinute)
+                Section("Title"){
+                    TextField("", text: $title)
+                        .focused($focusedField, equals: .title)
+                        .submitLabel(.next)
+                        .onSubmit {
+                            focusedField = .dateTime
+                        }
+                }
+                Section(){
+                    DatePicker("When", selection: $dateTime, displayedComponents: .hourAndMinute)
+                        .datePickerStyle(.wheel)
+                        .focused($focusedField, equals: .dateTime)
+                }
             }
             .navigationTitle("Add Event")
             .toolbar {
@@ -36,6 +55,9 @@ struct AddNewEvent: View {
                     
                 }
             }
+        }
+        .onAppear{
+            focusedField = .title
         }
     }
 }
