@@ -6,8 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		404954052E9841040057771F /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404954042E9841040057771F /* EventView.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		40435C102E9761B400B70A0E /* Timer Until.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Timer Until.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		404954042E9841040057771F /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -32,6 +37,7 @@
 		40435C072E9761B400B70A0E = {
 			isa = PBXGroup;
 			children = (
+				404954042E9841040057771F /* EventView.swift */,
 				40435C122E9761B400B70A0E /* Timer Until */,
 				40435C112E9761B400B70A0E /* Products */,
 			);
@@ -119,6 +125,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				404954052E9841040057771F /* EventView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

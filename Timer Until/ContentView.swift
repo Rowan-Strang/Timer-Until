@@ -59,21 +59,21 @@ struct ContentView: View {
                 } else {
                     List{
                         ForEach(eventsSorted){
-                            item in NavigationLink(value: "add later"){
+                            event in NavigationLink(destination: EventView(event: event)){
                                 HStack{
-                                    Text(item.emoji)
+                                    Text(event.emoji)
                                         .font(.largeTitle)
                                     
                                     VStack(alignment: .leading){
-                                        Text(item.title)
+                                        Text(event.title)
                                             .font(.title2)
-                                        if Calendar.current.isDateInToday(item.dateTime) {
+                                        if Calendar.current.isDateInToday(event.dateTime) {
                                             Text("Today")
                                                 .font(.subheadline)
                                         }
                                     }
                                     Spacer()
-                                    Text(item.dateTime.formatted(date: .omitted, time: .shortened))
+                                    Text(event.dateTime.formatted(date: .omitted, time: .shortened))
                                 }
                             }
                         }
