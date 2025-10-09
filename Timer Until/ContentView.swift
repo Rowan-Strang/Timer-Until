@@ -84,8 +84,12 @@ struct ContentView: View {
             .navigationTitle("Timer Until")
             .toolbar {
                 Button("Add Countdown", systemImage: "plus"){
-//                    let event = CountdownEvent(title: "Catch the Bus", dateTime: Date().addingTimeInterval(2 * 60 * 60), id: UUID(), emoji: "🚌")
+//                    let event = CountdownEvent(title: "Catch the Bus", dateTime: Date().addingTimeInterval(1.2 * 60 * 60), id: UUID(), emoji: "🚌")
 //                    events.items.append(event)
+//                    let event2 = CountdownEvent(title: "Meet Loran for Lunch", dateTime: Date().addingTimeInterval(2 * 60 * 60), id: UUID(), emoji: "🙆🏼‍♀️")
+//                    events.items.append(event2)
+//                    let event3 = CountdownEvent(title: "Wedding Meeting", dateTime: Date().addingTimeInterval(5.1 * 60 * 60), id: UUID(), emoji: "👨🏻‍💻")
+//                    events.items.append(event3)
                     showingAddNewEvent = true
                 }
             }
@@ -96,9 +100,6 @@ struct ContentView: View {
         
     }
     
-//    func removeEvent(at offsets: IndexSet){
-//        events.items.remove(atOffsets: offsets)
-//    }
     func removeEvent(at offsets: IndexSet){
 //        eventsSorted.remove(atOffsets: offsets)
         let idsToDelete = offsets.map {eventsSorted[$0].id }
