@@ -18,7 +18,17 @@ struct AddNewEvent: View {
     
     @State private var title = ""
     @State private var dateTime = Date()
-    @State private var emoji = "🚍"
+    @State private var emoji = "⏲️"
+    @State private var defaultEmoji = [
+        "👨🏻‍💻",
+        "✈️",
+        "🚗",
+        "🍔",
+        "☕️",
+        "🏃‍♂️",
+        "🎉",
+        "🛏️"
+    ]
     
     @FocusState private var focusedField: Field?
     
@@ -39,6 +49,14 @@ struct AddNewEvent: View {
                         .onSubmit {
                             focusedField = .dateTime
                         }
+                }
+                Section(){
+                    Picker("Emoji", selection: $emoji){
+                        ForEach (defaultEmoji, id: \.self){ emoji in
+                            Text(emoji)
+                        }
+                    }
+                    .pickerStyle(.segmented)
                 }
                 Section(){
                     DatePicker("When", selection: $dateTime, displayedComponents: .hourAndMinute)

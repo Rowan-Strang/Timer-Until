@@ -66,15 +66,36 @@ struct ContentView: View {
                                     
                                     VStack(alignment: .leading){
                                         Text(event.title)
-                                            .font(.title2)
+                                            .font(.title3)
                                         if Calendar.current.isDateInToday(event.dateTime) {
-                                            Text("Today")
-                                                .font(.subheadline)
+                                            Text("Today at \(event.dateTime.formatted(date: .omitted, time: .shortened))")
+                                                .font(.footnote)
                                         }
                                     }
                                     Spacer()
-                                    Text(event.dateTime.formatted(date: .omitted, time: .shortened))
+                                    var totalSeconds: Int {
+                                        max(0, Int(event.dateTime.timeIntervalSince(Date())))
+                                    }
+                                    var remainingHours: Int {
+                                        totalSeconds / 60 / 60
+                                    }
+                                    
+                                    var remainingMinutes: Int {
+                                        (totalSeconds / 60) % 60
+                                    }
+                                    
+                                    TimelineView(.periodic(from: .now, by: 1)) { context in
+                                        HStack(spacing: 0) {
+                                            Text("\(String(format: "%02d",remainingHours)):\(String(format: "%02d",remainingMinutes))")
+                                                .font(.title).fontWeight(.semibold)
+//                                            Text(String(format: "%02d",remainingHours))
+//                                            Text(":")
+//                                            Text(String(format: "%02d",remainingMinutes))
+                                            //                                        Text(event.dateTime.formatted(date: .omitted, time: .shortened))
+                                        }
+                                    }
                                 }
+                                .padding(.vertical, 8)
                             }
                         }
                         .onDelete(perform: removeEvent)
