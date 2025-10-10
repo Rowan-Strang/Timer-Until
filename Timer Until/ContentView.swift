@@ -18,21 +18,32 @@ struct CountdownEvent: Identifiable, Codable {
 class Events {
     var items = [CountdownEvent](){
         didSet {
-            if let encoded = try? JSONEncoder().encode(items) {
-                UserDefaults.standard.set(encoded, forKey: "Events")
-            }
+            EventsStore.save(items)
+//            if let encoded = try? JSONEncoder().encode(items) {
+//                UserDefaults.standard.set(encoded, forKey: "Events")
+//            }
         }
     }
     
     init() {
-        if let savedItems = UserDefaults.standard.data(forKey: "Events") {
-            if let decodedItems = try? JSONDecoder().decode([CountdownEvent].self, from: savedItems){
-                items = decodedItems
-                return
-            }
+        items = EventsStore.load()
+        NotificationCenter.default.addObserver(
+            forName: .eventsStoreDidChange,
+            object: nil,
+            queue: .main
+        ) {[weak self] _ in
+            guard let self else {return}
+            self.items = EventsStore.load()
         }
         
-        items = []
+//        if let savedItems = UserDefaults.standard.data(forKey: "Events") {
+//            if let decodedItems = try? JSONDecoder().decode([CountdownEvent].self, from: savedItems){
+//                items = decodedItems
+//                return
+//            }
+//        }
+//        
+//        items = []
     }
 }
 
@@ -112,6 +123,7 @@ struct ContentView: View {
 //                    let event3 = CountdownEvent(title: "Wedding Meeting", dateTime: Date().addingTimeInterval(5.1 * 60 * 60), id: UUID(), emoji: "👨🏻‍💻")
 //                    events.items.append(event3)
                     showingAddNewEvent = true
+//                    UserDefaults.standard.removeObject(forKey: "Events")
                 }
             }
             .sheet(isPresented: $showingAddNewEvent) {
@@ -123,8 +135,10 @@ struct ContentView: View {
     
     func removeEvent(at offsets: IndexSet){
 //        eventsSorted.remove(atOffsets: offsets)
-        let idsToDelete = offsets.map {eventsSorted[$0].id }
-        events.items.removeAll {idsToDelete.contains($0.id) }
+        withAnimation{
+            let idsToDelete = offsets.map {eventsSorted[$0].id }
+            events.items.removeAll {idsToDelete.contains($0.id) }
+        }
     }
 }
 
