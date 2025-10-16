@@ -23,7 +23,7 @@ class LiveActivityManager {
             do {
                 let activity = try Activity<LiveActivityAttributes>.request(
                     attributes: attributes,
-                    content: .init(state: initalState, staleDate: dateTime))
+                    content: .init(state: initalState, staleDate: nil))
                 self.activity = activity
                 print("Live activity started: \(activity.id)")
             } catch {

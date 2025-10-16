@@ -24,25 +24,32 @@ struct TimerUntilLiveActivity: Widget {
             DynamicIsland {
                 // Expanded UI goes here.  Compose the expanded UI through
                 // various regions, like leading/trailing/center/bottom
-                DynamicIslandExpandedRegion(.leading) {
-                    AppLogo()
+//                DynamicIslandExpandedRegion(.leading) {
+//                    AppLogo()
+//                }
+//                DynamicIslandExpandedRegion(.trailing) {
+//                    Text(context.attributes.eventTitle)
+//                        .font(.system(size: 12))
+//                        .fontWeight(.medium)
+//                        .foregroundColor(.green)
+//                        .lineLimit(1)
+//                }
+                DynamicIslandExpandedRegion(.center) {
+                    TimerMain(targetDate: context.state.dateTime)
                 }
-                DynamicIslandExpandedRegion(.trailing) {
+                DynamicIslandExpandedRegion(.bottom) {
                     Text(context.attributes.eventTitle)
                         .font(.system(size: 12))
                         .fontWeight(.medium)
                         .foregroundColor(.green)
                         .lineLimit(1)
                 }
-                DynamicIslandExpandedRegion(.center) {
-                    TimerMain(targetDate: context.state.dateTime)
-                }
             } compactLeading: {
                 AppLogo()
             } compactTrailing: {
                 TimerLight(targetDate: context.state.dateTime)
             } minimal: {
-                Text(context.attributes.eventTitle)
+                TimerTiny(targetDate: context.state.dateTime)
             }
 //            .widgetURL(URL(string: "http://www.apple.com"))
 //            .keylineTint(Color.red)
@@ -56,5 +63,5 @@ struct TimerUntilLiveActivity: Widget {
             LiveActivityAttributes.init(eventTitle: "Time to Leave")) {
    TimerUntilLiveActivity()
 } contentStates: {
-    LiveActivityAttributes.ContentState(dateTime: Date().addingTimeInterval(25*60))
+    LiveActivityAttributes.ContentState(dateTime: Date().addingTimeInterval(3603))
 }

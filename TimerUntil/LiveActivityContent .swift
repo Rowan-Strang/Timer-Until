@@ -15,8 +15,9 @@ struct MainActivityContent: View {
     var body: some View {
         VStack {
             VStack {
-                Text(targetDate, style: .timer)
+                Text(timerInterval: Date.now...targetDate, countsDown: true)
                     .monospacedDigit()
+                    .multilineTextAlignment(.center)
                     .font(.system(size: 34, weight: .bold))
                     .foregroundColor(.green)
                 Text(eventName)
@@ -45,8 +46,9 @@ struct TimerMain: View {
     var targetDate: Date
     
     var body: some View {
-        Text(targetDate, style: .timer)
+        Text(timerInterval: Date.now...targetDate, countsDown: true)
             .monospacedDigit()
+            .multilineTextAlignment(.center)
             .font(.system(size: 22, weight: .semibold))
             .foregroundColor(.green)
     }
@@ -56,12 +58,24 @@ struct TimerLight: View {
     var targetDate: Date
     
     var body: some View {
-        Text(targetDate, style: .timer)
+        Text(timerInterval: Date.now...targetDate, countsDown: true)
             .monospacedDigit()
+            .multilineTextAlignment(.center)
             .font(.system(size: 15, weight: .light))
             .foregroundColor(.green)
             .frame(width: 55, alignment: .trailing)
     }
 }
 
-
+struct TimerTiny: View {
+    var targetDate: Date
+    
+    var body: some View {
+        Text(timerInterval: Date.now...targetDate, countsDown: true)
+            .monospacedDigit()
+            .multilineTextAlignment(.center)
+            .font(.system(size: 9, weight: .ultraLight))
+            .foregroundColor(.green)
+            .frame(width: 55, alignment: .trailing)
+    }
+}
