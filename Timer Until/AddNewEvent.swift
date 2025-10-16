@@ -69,6 +69,7 @@ struct AddNewEvent: View {
                 Button("Save") {
                     let event = CountdownEvent(title: title, dateTime: dateTime, id: UUID(), emoji: emoji)
                     events.items.append(event)
+                    LiveActivityManager.shared.startActivity(eventTitle: title, dateTime: dateTime)
                     dismiss()
                     
                 }

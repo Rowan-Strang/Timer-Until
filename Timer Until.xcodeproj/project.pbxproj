@@ -7,15 +7,72 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		400B7CCA2EA09BF40076D587 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 400B7CC92EA09BF40076D587 /* WidgetKit.framework */; };
+		400B7CCB2EA09BF40076D587 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4031B1BD2E9C4B4500F2C641 /* SwiftUI.framework */; };
+		400B7CD82EA09BF50076D587 /* TimerUntilExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 400B7CC82EA09BF40076D587 /* TimerUntilExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		404954052E9841040057771F /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404954042E9841040057771F /* EventView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		400B7CD62EA09BF50076D587 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 40435C082E9761B400B70A0E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 400B7CC72EA09BF40076D587;
+			remoteInfo = TimerUntilExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		4031B1D02E9C4B4600F2C641 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				400B7CD82EA09BF50076D587 /* TimerUntilExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		400B7CC82EA09BF40076D587 /* TimerUntilExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TimerUntilExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		400B7CC92EA09BF40076D587 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		4031B1BD2E9C4B4500F2C641 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		40435C102E9761B400B70A0E /* Timer Until.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Timer Until.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		404954042E9841040057771F /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		400B7CD92EA09BF50076D587 /* Exceptions for "TimerUntil" folder in "TimerUntilExtension" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 400B7CC72EA09BF40076D587 /* TimerUntilExtension */;
+		};
+		400B7CDD2EA09DEC0076D587 /* Exceptions for "TimerUntil" folder in "Timer Until" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				LiveActivityAttributes.swift,
+				LiveActivityManager.swift,
+			);
+			target = 40435C0F2E9761B400B70A0E /* Timer Until */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		400B7CCC2EA09BF40076D587 /* TimerUntil */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				400B7CDD2EA09DEC0076D587 /* Exceptions for "TimerUntil" folder in "Timer Until" target */,
+				400B7CD92EA09BF50076D587 /* Exceptions for "TimerUntil" folder in "TimerUntilExtension" target */,
+			);
+			path = TimerUntil;
+			sourceTree = "<group>";
+		};
 		40435C122E9761B400B70A0E /* Timer Until */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = "Timer Until";
@@ -24,6 +81,15 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		400B7CC52EA09BF40076D587 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				400B7CCB2EA09BF40076D587 /* SwiftUI.framework in Frameworks */,
+				400B7CCA2EA09BF40076D587 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		40435C0D2E9761B400B70A0E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -34,11 +100,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4031B1BA2E9C4B4500F2C641 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4031B1BD2E9C4B4500F2C641 /* SwiftUI.framework */,
+				400B7CC92EA09BF40076D587 /* WidgetKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		40435C072E9761B400B70A0E = {
 			isa = PBXGroup;
 			children = (
 				404954042E9841040057771F /* EventView.swift */,
 				40435C122E9761B400B70A0E /* Timer Until */,
+				400B7CCC2EA09BF40076D587 /* TimerUntil */,
+				4031B1BA2E9C4B4500F2C641 /* Frameworks */,
 				40435C112E9761B400B70A0E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -47,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				40435C102E9761B400B70A0E /* Timer Until.app */,
+				400B7CC82EA09BF40076D587 /* TimerUntilExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -54,6 +132,28 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		400B7CC72EA09BF40076D587 /* TimerUntilExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 400B7CDA2EA09BF50076D587 /* Build configuration list for PBXNativeTarget "TimerUntilExtension" */;
+			buildPhases = (
+				400B7CC42EA09BF40076D587 /* Sources */,
+				400B7CC52EA09BF40076D587 /* Frameworks */,
+				400B7CC62EA09BF40076D587 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				400B7CCC2EA09BF40076D587 /* TimerUntil */,
+			);
+			name = TimerUntilExtension;
+			packageProductDependencies = (
+			);
+			productName = TimerUntilExtension;
+			productReference = 400B7CC82EA09BF40076D587 /* TimerUntilExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		40435C0F2E9761B400B70A0E /* Timer Until */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 40435C1B2E9761B500B70A0E /* Build configuration list for PBXNativeTarget "Timer Until" */;
@@ -61,10 +161,12 @@
 				40435C0C2E9761B400B70A0E /* Sources */,
 				40435C0D2E9761B400B70A0E /* Frameworks */,
 				40435C0E2E9761B400B70A0E /* Resources */,
+				4031B1D02E9C4B4600F2C641 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				400B7CD72EA09BF50076D587 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				40435C122E9761B400B70A0E /* Timer Until */,
@@ -86,6 +188,9 @@
 				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 1640;
 				TargetAttributes = {
+					400B7CC72EA09BF40076D587 = {
+						CreatedOnToolsVersion = 16.4;
+					};
 					40435C0F2E9761B400B70A0E = {
 						CreatedOnToolsVersion = 16.4;
 					};
@@ -106,11 +211,19 @@
 			projectRoot = "";
 			targets = (
 				40435C0F2E9761B400B70A0E /* Timer Until */,
+				400B7CC72EA09BF40076D587 /* TimerUntilExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		400B7CC62EA09BF40076D587 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		40435C0E2E9761B400B70A0E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -121,6 +234,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		400B7CC42EA09BF40076D587 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		40435C0C2E9761B400B70A0E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -131,7 +251,69 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		400B7CD72EA09BF50076D587 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 400B7CC72EA09BF40076D587 /* TimerUntilExtension */;
+			targetProxy = 400B7CD62EA09BF50076D587 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		400B7CDB2EA09BF50076D587 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F7U2N9TYLR;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TimerUntil/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = TimerUntil;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "me.rowan.strang.Timer-Until.TimerUntil";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		400B7CDC2EA09BF50076D587 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F7U2N9TYLR;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TimerUntil/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = TimerUntil;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "me.rowan.strang.Timer-Until.TimerUntil";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		40435C192E9761B500B70A0E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -261,6 +443,8 @@
 				DEVELOPMENT_TEAM = F7U2N9TYLR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				INFOPLIST_KEY_NSSupportsLiveActivitiesFrequentUpdates = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -289,6 +473,8 @@
 				DEVELOPMENT_TEAM = F7U2N9TYLR;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSSupportsLiveActivities = YES;
+				INFOPLIST_KEY_NSSupportsLiveActivitiesFrequentUpdates = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -310,6 +496,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		400B7CDA2EA09BF50076D587 /* Build configuration list for PBXNativeTarget "TimerUntilExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				400B7CDB2EA09BF50076D587 /* Debug */,
+				400B7CDC2EA09BF50076D587 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		40435C0B2E9761B400B70A0E /* Build configuration list for PBXProject "Timer Until" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

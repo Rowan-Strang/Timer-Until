@@ -6,11 +6,13 @@
 //
 import AppIntents
 import Foundation
+import ActivityKit
 
-struct AddEventIntent: AppIntent {
+struct AddEventIntent: AppIntent, LiveActivityIntent {
     static var title: LocalizedStringResource = "Add Timer Event"
     static var description = IntentDescription("Adds a new countdown event to Timer Until.")
-
+    static var openAppWhenRun = false
+    
     @Parameter(title: "Title")
     var title: String
 
@@ -23,12 +25,13 @@ struct AddEventIntent: AppIntent {
     static var parameterSummary: some ParameterSummary {
         Summary("Add \(\.$title) at \(\.$time) \(\.$emoji)")
     }
-
-    func perform() async throws -> some IntentResult & ProvidesDialog {
+@MainActor
+    func perform() async throws -> some IntentResult {
         let event = CountdownEvent(title: title, dateTime: time, id: UUID(), emoji: emoji)
-
         EventsStore.add(event)
-
-        return .result(dialog: "Event added.")
+        if ActivityAuthorizationInfo().areActivitiesEnabled {
+            LiveActivityManager.shared.startActivity(eventTitle: title, dateTime: time)
+        }
+        return .result()
     }
 }

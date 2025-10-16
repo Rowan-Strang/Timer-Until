@@ -19,9 +19,6 @@ class Events {
     var items = [CountdownEvent](){
         didSet {
             EventsStore.save(items)
-//            if let encoded = try? JSONEncoder().encode(items) {
-//                UserDefaults.standard.set(encoded, forKey: "Events")
-//            }
         }
     }
     
@@ -35,15 +32,6 @@ class Events {
             guard let self else {return}
             self.items = EventsStore.load()
         }
-        
-//        if let savedItems = UserDefaults.standard.data(forKey: "Events") {
-//            if let decodedItems = try? JSONDecoder().decode([CountdownEvent].self, from: savedItems){
-//                items = decodedItems
-//                return
-//            }
-//        }
-//        
-//        items = []
     }
 }
 
