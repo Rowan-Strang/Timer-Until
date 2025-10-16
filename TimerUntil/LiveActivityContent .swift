@@ -74,7 +74,7 @@ struct TimerTiny: View {
         Text(timerInterval: Date.now...targetDate, countsDown: true)
             .monospacedDigit()
             .multilineTextAlignment(.center)
-            .font(.system(size: 9, weight: .ultraLight))
+            .font(.system(size: 9, weight: .light))
             .foregroundColor(.green)
             .frame(width: 55, alignment: .trailing)
     }

@@ -12,6 +12,7 @@ struct AddEventIntent: AppIntent, LiveActivityIntent {
     static var title: LocalizedStringResource = "Add Timer Event"
     static var description = IntentDescription("Adds a new countdown event to Timer Until.")
     static var openAppWhenRun = false
+    static var authenticationPolicy: IntentAuthenticationPolicy = .alwaysAllowed
     
     @Parameter(title: "Title")
     var title: String
