@@ -50,7 +50,7 @@ struct TimerUntilLiveActivity: Widget {
                             .baselineOffset(13)
                             .offset(x: 6)
                             .frame(width: 48, height: 50)
-                            .clipped()
+//                            .clipped()
                             .accessibilityLabel("Event Emoji")
                         VStack(spacing: 2) {
                             TimerMain(targetDate: context.state.dateTime, size: 42)
@@ -67,7 +67,7 @@ struct TimerUntilLiveActivity: Widget {
                             .baselineOffset(13)
                             .offset(x: -6)
                             .frame(width: 48, height: 50)
-                            .clipped()
+//                            .clipped()
                             .accessibilityLabel("Event Emoji")
                     }
                     
@@ -103,5 +103,5 @@ struct TimerUntilLiveActivity: Widget {
             LiveActivityAttributes.init(eventTitle: "Time to Leave")) {
    TimerUntilLiveActivity()
 } contentStates: {
-    LiveActivityAttributes.ContentState(dateTime: Date().addingTimeInterval(3603), id: UUID(), emoji: "👨🏻‍💻")
+    LiveActivityAttributes.ContentState(dateTime: Date().addingTimeInterval(3603), id: UUID(), emoji: "⏲️")
 }
