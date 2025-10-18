@@ -63,5 +63,5 @@ struct TimerUntilLiveActivity: Widget {
             LiveActivityAttributes.init(eventTitle: "Time to Leave")) {
    TimerUntilLiveActivity()
 } contentStates: {
-    LiveActivityAttributes.ContentState(dateTime: Date().addingTimeInterval(3603))
+    LiveActivityAttributes.ContentState(dateTime: Date().addingTimeInterval(3603), id: UUID())
 }

@@ -126,6 +126,9 @@ struct ContentView: View {
         withAnimation{
             let idsToDelete = offsets.map {eventsSorted[$0].id }
             events.items.removeAll {idsToDelete.contains($0.id) }
+            for eventId in idsToDelete {
+                LiveActivityManager.shared.endActivity(id: eventId)
+            }
         }
     }
 }

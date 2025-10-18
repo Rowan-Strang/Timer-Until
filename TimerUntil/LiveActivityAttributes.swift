@@ -12,6 +12,7 @@ struct LiveActivityAttributes: ActivityAttributes {
     public typealias LiveActivityStatus = ContentState
     public struct ContentState: Codable, Hashable {
         var dateTime: Date
+        var id: UUID
     }
     var eventTitle: String
 }
