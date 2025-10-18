@@ -13,6 +13,7 @@ struct LiveActivityAttributes: ActivityAttributes {
     public struct ContentState: Codable, Hashable {
         var dateTime: Date
         var id: UUID
+        var emoji: String
     }
     var eventTitle: String
 }

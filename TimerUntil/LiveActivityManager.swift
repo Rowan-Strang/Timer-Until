@@ -15,10 +15,10 @@ class LiveActivityManager {
     
     private init() {}
     
-    func startActivity(eventTitle: String, dateTime: Date, id: UUID) {
+    func startActivity(eventTitle: String, dateTime: Date, id: UUID, emoji: String) {
         if ActivityAuthorizationInfo().areActivitiesEnabled {
             let attributes = LiveActivityAttributes(eventTitle: eventTitle)
-            let initialState = LiveActivityAttributes.LiveActivityStatus(dateTime: dateTime, id: id)
+            let initialState = LiveActivityAttributes.LiveActivityStatus(dateTime: dateTime, id: id, emoji: emoji)
             
             do {
                 let activity = try Activity<LiveActivityAttributes>.request(

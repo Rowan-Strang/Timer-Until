@@ -17,6 +17,7 @@ struct MainActivityContent: View {
             VStack {
                 Text(timerInterval: Date.now...targetDate, countsDown: true)
                     .monospacedDigit()
+                    .contentTransition(.numericText(countsDown: true))
                     .multilineTextAlignment(.center)
                     .font(.system(size: 34, weight: .bold))
                     .foregroundColor(.green)
@@ -33,23 +34,27 @@ struct MainActivityContent: View {
     }
 }
 
-struct AppLogo: View {
+struct eventEmoji: View {
+    let emoji: String
     var body: some View {
-        Image(systemName: "timer.circle.fill")
-            .resizable()
-            .scaledToFit()
+        Text(emoji)
+            .font(.system(size: 34))
+            .minimumScaleFactor(0.5)
+            .lineLimit(1)
         
     }
 }
 
 struct TimerMain: View {
     var targetDate: Date
+    var size: CGFloat
     
     var body: some View {
         Text(timerInterval: Date.now...targetDate, countsDown: true)
             .monospacedDigit()
+            .contentTransition(.numericText(countsDown: true))
             .multilineTextAlignment(.center)
-            .font(.system(size: 22, weight: .semibold))
+            .font(.system(size: size, weight: .semibold))
             .foregroundColor(.green)
     }
 }

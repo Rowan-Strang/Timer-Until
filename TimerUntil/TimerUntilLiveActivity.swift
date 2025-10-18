@@ -14,38 +14,78 @@ struct TimerUntilLiveActivity: Widget {
     var body: some WidgetConfiguration {
         ActivityConfiguration(for: LiveActivityAttributes.self) { context in
             // Lock screen/banner UI goes here
-            VStack {
-                MainActivityContent(eventName: context.attributes.eventTitle, targetDate: context.state.dateTime)
+            HStack{
+                Text(context.state.emoji)
+                    .font(.system(size: 42))
+                    .offset(x: 20)
+//                    .frame(width: 48)
+//                    .clipped()
+                    .accessibilityLabel("Event Emoji")
+                VStack {
+                    MainActivityContent(eventName: context.attributes.eventTitle, targetDate: context.state.dateTime)
+                        .padding(15)
+                }
+                Text(context.state.emoji)
+                    .font(.system(size: 42))
+                    .offset(x: -20)
+//                    .frame(width: 48)
+//                    .clipped()
+                    .accessibilityLabel("Event Emoji")
             }
             .activityBackgroundTint(Color.black)
             .activitySystemActionForegroundColor(Color.black)
 
         } dynamicIsland: { context in
             DynamicIsland {
-                // Expanded UI goes here.  Compose the expanded UI through
-                // various regions, like leading/trailing/center/bottom
-//                DynamicIslandExpandedRegion(.leading) {
-//                    AppLogo()
-//                }
-//                DynamicIslandExpandedRegion(.trailing) {
+                DynamicIslandExpandedRegion(.leading) {
+                    EmptyView()
+                }
+                DynamicIslandExpandedRegion(.trailing) {
+                    EmptyView()
+                }
+                DynamicIslandExpandedRegion(.center) {
+                    HStack(alignment: .center, spacing: 8){
+                        Text(context.state.emoji)
+                            .font(.system(size: 42))
+                            .baselineOffset(13)
+                            .offset(x: 6)
+                            .frame(width: 48, height: 50)
+                            .clipped()
+                            .accessibilityLabel("Event Emoji")
+                        VStack(spacing: 2) {
+                            TimerMain(targetDate: context.state.dateTime, size: 42)
+                                .lineLimit(1)
+                                .minimumScaleFactor(0.9)
+                            Text(context.attributes.eventTitle)
+                                .font(.system(size: 12))
+                                .fontWeight(.medium)
+                                .foregroundColor(.green)
+                                .lineLimit(1)
+                        }
+                        Text(context.state.emoji)
+                            .font(.system(size: 42))
+                            .baselineOffset(13)
+                            .offset(x: -6)
+                            .frame(width: 48, height: 50)
+                            .clipped()
+                            .accessibilityLabel("Event Emoji")
+                    }
+                    
+//                        .layoutPriority(0)
+//                        .padding(.horizontal, 6)
+//                        .layoutPriority(0)
+//                        .background(.red)
+                }
+                DynamicIslandExpandedRegion(.bottom) {
+                    EmptyView()
 //                    Text(context.attributes.eventTitle)
 //                        .font(.system(size: 12))
 //                        .fontWeight(.medium)
 //                        .foregroundColor(.green)
 //                        .lineLimit(1)
-//                }
-                DynamicIslandExpandedRegion(.center) {
-                    TimerMain(targetDate: context.state.dateTime)
-                }
-                DynamicIslandExpandedRegion(.bottom) {
-                    Text(context.attributes.eventTitle)
-                        .font(.system(size: 12))
-                        .fontWeight(.medium)
-                        .foregroundColor(.green)
-                        .lineLimit(1)
                 }
             } compactLeading: {
-                AppLogo()
+                eventEmoji(emoji: context.state.emoji)
             } compactTrailing: {
                 TimerLight(targetDate: context.state.dateTime)
             } minimal: {
@@ -63,5 +103,5 @@ struct TimerUntilLiveActivity: Widget {
             LiveActivityAttributes.init(eventTitle: "Time to Leave")) {
    TimerUntilLiveActivity()
 } contentStates: {
-    LiveActivityAttributes.ContentState(dateTime: Date().addingTimeInterval(3603), id: UUID())
+    LiveActivityAttributes.ContentState(dateTime: Date().addingTimeInterval(3603), id: UUID(), emoji: "👨🏻‍💻")
 }

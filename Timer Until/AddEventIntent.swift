@@ -31,7 +31,7 @@ struct AddEventIntent: AppIntent, LiveActivityIntent {
         let event = CountdownEvent(title: title, dateTime: time, id: UUID(), emoji: emoji)
         EventsStore.add(event)
         if ActivityAuthorizationInfo().areActivitiesEnabled {
-            LiveActivityManager.shared.startActivity(eventTitle: title, dateTime: time, id: event.id)
+            LiveActivityManager.shared.startActivity(eventTitle: title, dateTime: time, id: event.id, emoji: emoji)
         }
         return .result()
     }
